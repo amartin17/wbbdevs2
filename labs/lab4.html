@@ -1,126 +1,114 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-<title>Find your car</title>
-<!-- CSS styles for standard search box -->
-<style type="text/css">
-	#tfheader{
-		background-color:#c3dfef;
-	}
-	#tfnewsearch{
-		float:right;
-		padding:20px;
-	}
-	.tftextinput{
-		margin: 0;
-		padding: 5px 15px;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size:14px;
-		border:1px solid #0076a3; border-right:0px;
-		border-top-left-radius: 5px 5px;
-		border-bottom-left-radius: 5px 5px;
-	}
-	.tfbutton {
-		margin: 0;
-		padding: 5px 15px;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size:14px;
-		outline: none;
-		cursor: pointer;
-		text-align: center;
-		text-decoration: none;
-		color: #ffffff;
-		border: solid 1px #0076a3; border-right:0px;
-		background: #0095cd;
-		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
-		border-top-right-radius: 5px 5px;
-		border-bottom-right-radius: 5px 5px;
-	}
-	.tfbutton:hover {
-		text-decoration: none;
-		background: #007ead;
-		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
-	}
-</style>
-</head>
-<body>
-	<div id="tfheader">
-	<div class="tfclear"></div>
-	</div>
-	    <body>
-        <h1>Towed Vehicles</h1>
-        <input type="text" id='input' name="search" placeholder="Plate Number">
-<button id='submit'>Submit</button>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
+    <head>
+        <title>Towed Cars </title>
+    </head>
+    <body>
+        <h1>Towed Cars</h1>
+        <button id="submit">Submit</button>
+        <div id="results"></div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-	$('#submit').click(function(){
-	var baseURL = 'https://data.cityofchicago.org/resource/ygr5-vcbg.json';
-	var license = $('#input').val();
-	var filters = '?plate=' + license;
-	// full URL
-	var url = baseURL + filters;
-	console.log(url);
-	console.log(license)
-	
-	// jQuery command to retrieve json data
-	
-	$.getJSON(url)
-	.done (function (data) {
-	// TODO: add script to add data to the DOM
-	console.log(data);
-	var inspections = data
-	// loop through the records
-	if (inspections.length==0) {
-	var html = '<p>Sorry there were no results</p>'
-	$("body").append(html)
-	}
-	else {
-	$.each(data, function(index, value){
-	var html = "<div>" + "<hr>" + "<h1>License Plate #: " + value.plate + "</h1>" +
-	"<p>Color: " + value.color + "</p>" + 
-	"<p>Make: " + value.make + "</p>" +
-	"<p>State: " + value.state + "</p>" +
-	"<p>Tow Date: " +value.tow_date + "</p>" +"<p>Towed to Address: " + value.towed_to_address +"</p>" +
-	"<p>Inventory Number: " + value.inventory_number + "</p>" +"<p>Tow Facility Phone: " + value.tow_facility_phone + "</p>" +"<hr>" +"</div>"
-	"</div>";
+        <script>
+        
+            var towedVehicle;
+            
+            $(function(){
+                
+                $("#submit").click(function(){
+                    
+                    var html = "";
+                    
+                    // base URL to the food inspections data
+                    var baseURL = 'https://data.cityofchicago.org/resource/rp42-fxjt.json';
+                    
+                    // optional filters we're appending - date range and zip
+                    var filters = "";
+                    
+                    // full URL
+                    var url = baseURL;
+                        
+                    $.getJSON(url).done (function (data) {
+                        // TODO:  add script to add data to the DOM
+                        console.log(data);
+                        // loop through the records
+                        
+                        towedVehicle = data;
+                        
+                        var date = towedVehicle[0].tow_date;
 
-$("body").append(html);
-
-		});
-		}
-	})
-
-		})
-		<type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-
-</script>
- <div id="piechart" style="width: 900px; height: 500px;"></div>
-</body>
+                        var blk = 0, whi = 0, gry = 0, sil = 0, grn = 0, blu = 0, red = 0, oth = 0;
+                        
+                        if(towedVehicle.length == 0){
+                            html = "No Vehicle Reported";
+                        } else{
+                            $.each(towedVehicle, function(index, value){
+                                if(value.tow_date == date){
+                                    var col = value.color;
+                                    if (col == "BLK")
+                                        blk++;
+                                    else if(col == "WHI")
+                                        whi++;
+                                    else if(col == "GRY")
+                                        gry++;
+                                    else if(col == "SIL")
+                                        sil++;
+                                    else if(col == "GRN")
+                                        grn++;
+                                    else if(col == "BLU")
+                                        blu++;
+                                    else if(col == "RED" || col == "MAR")
+                                        red++;
+                                    else
+                                        oth++;
+                                }
+                            }) 
+                          google.charts.load('current', {'packages':['corechart']});
+                    
+                         
+                          google.charts.setOnLoadCallback(drawChart);
+                    
+                        
+                          function drawChart() {
+                    
+                            // Create the data table.
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Car color');
+                            data.addColumn('number', 'Quantity');
+                            data.addRows([
+                              ['Black', blk],
+                              ['White', whi],
+                              ['Grey', gry],
+                              ['Silver', sil],
+                              ['Green', grn],
+                              ['Blue', blu],
+                              ['Red', red],
+                              ['Other', oth]
+                            ]);
+                    
+                            // Set chart options
+                            var options = {'title':'Towed cars by color on ' + date,
+                                           'width':400,
+                                           'height':300};
+                    
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart = new google.visualization.PieChart(document.getElementById('results'));
+                            chart.draw(data, options);
+                          }
+                        }
+                        
+                        
+                        
+                    }) 
+                    
+                }) 
+                
+            }) 
+            
+            
+        </script>
+    </body>
 </html>
