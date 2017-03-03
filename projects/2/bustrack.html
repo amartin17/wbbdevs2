@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Bus Tracker Info</title>
+    </head>
+    <style>
+    body {
+            font-family: sans-serif;
+            background-color: #7597af;
+            margin:2%;
+            color: white;
+        }
+        h1{
+            color:black;
+                }
+                 ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        .button {
+    background-color: Black;
+    border: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+    </style>
+    <body>
+          <ul>
+  <li class="nobullet"><a href="bus.html">Home</a></li>
+  <li class="nobullet"><a href="bustrack.html">Bus Tracker</a></li>
+</ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-blue.min.css" />
+      <script>
+       
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getroutes";
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "gPyiewU989amnYvzRfaG9GuGP",
+                      "format":"json"}
+            }).done (function (data) {
+              console.log(data);
+              $("div").append("<h1>Bus Routes</h1>");
+             
+              $.each(data["bustime-response"]["routes"], function(i,v) {
+                  $("div").append("Route #" + v.rt + ", " + v.rtnm  + ""  +" <br>");
+                
+              })
+
+            });
+        });
+        
+            
+</script>
+<center>
+    <h1>Click to see info on bus route</h1>
+<a href="western.html" class="button">Western</a>
+<a href="addison.html" class="button">Addison</a>
+</center>
+    </body>
+</html>
