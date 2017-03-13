@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Me</title>
+</head>
+<body>
+<h1>Alejandro Martin</h1>
+
+<p>My top 5 favorite foods</p>
+<ol>
+  <li>Steak</li>         
+  <li>Burger</li>
+  <li>bacon</li>
+  <li>Fried Chicken</li>
+  <li>Crepes</li>
+</ol>
+<br>
+<select>
+  <option value="Hobbies">Hobbies</option>
+  <option value="Favorite foods">Favorite foods</option>
+  <option value="Favorite tv shows">Favorite tv shows</option>
+  <option value="Favorite classes">Favorite Classes</option>
+</select>
+<h2>Class Schedule</h2>
+        <hr>
+        <table border="1" style="width:80%">
+            <tr>
+                <th>Period</th>
+                <th>Class</th>
+                <th>Class room #</th>
+                <th>Teacher</th>
+                <th>time</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>PE </td>
+                <td>300</td>
+                <td>Mr.Hoffman</td>
+                <td>8:00-8:50</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>English</td>
+                <td>207</td>
+                <td>Mr.Nordlund</td>
+                <td>8:55-9:45</td>
+            <tr>
+                <td>3</td>
+                <td>Web Dev</td>
+                <td>124</td>
+                <td>Mr.Berg</td>
+                <td>9:50-10:40</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>European History </td>
+                <td>224</td>
+                <td>Mrs.Malstrom</td>
+                <td>10:45-11:35</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Lunch</td>
+                <td>Lunchroom</td>
+                <td>N/A</td>
+                <td>11:40-12:30</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Chemistry</td>
+                <td>111</td>
+                <td>Mrs.Trine</td>
+                <td>12:35-1:25</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Geometry</td>
+                <td>351</td>
+                <td>Mr. Mcadams</td>
+                <td>1:30-2:20</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Mandarin</td>
+                <td>331</td>
+                <td>Mrs.Huang</td>
+                <td>2:25-3:15</td>
+            </tr>
+        </table>
+        First name: <input type="text" name="FirstName" value="Alejandro"><br>
+Last name: <input type="text" name="LastName" value="Martin"><br>
+<input type="submit" value="Submit">
+        <button type="button" id="btnShowEmail" >Show email address</button>
+<script>
+    document.getElementById("btnShowEmail").onclick=function(){
+        var txtInputEmail = document.getElementById("email");
+        var strEmail = txtInputEmail.value;   
+        var message = "";
+        if (strEmail === "") {
+            message = "Hey, enter an email address!";
+        }
+        else {
+            message = "The value in the email input box is " + strEmail;
+        }
+        alert(message);  
+    };
+</script>
+</body>
+</html>
