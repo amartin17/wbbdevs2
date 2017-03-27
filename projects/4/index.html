@@ -15,35 +15,326 @@
       </style>
   </head>
   <body>
+      <link rel="manifest" href="./manifest.json">
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Title</span>
+          <span class="mdl-layout-title">Information on Chicago</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a id="link1" class="mdl-navigation__link" href="">Link 1</a>
-            <a id="link2" class="mdl-navigation__link" href="">Link 2</a>
-            <a id="link3" class="mdl-navigation__link" href="">Link 3</a>
-          </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">Information on Chicago</span>
         <nav class="mdl-navigation">
-          <a id="link1" class="mdl-navigation__link" href="#">Link 1</a>
-          <a id="link2" class="mdl-navigation__link" href="#">Link 2</a>
-          <a id="link3" class="mdl-navigation__link" href="#">Link 3</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+          <a id="link1" class="mdl-navigation__link" href="#">Chicago Crimes</a>
+          <a id="link2" class="mdl-navigation__link" href="#">Chicago Towed cars search</a>
+          <a id="link3" class="mdl-navigation__link" href="#">Chicago Stats and information</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div id="screen1" class="screen page-content">Screen 1</div>
-        <div id="screen2" class="screen page-content">Screen 2</div>
-        <div id="screen3" class="screen page-content">Screen 3</div>
+        <div id="screen1" class="screen page-content">Screen 1
+    <head>
+       <title>Chicago Crime Data Set</title>
+       <style>
+        body {
+            font-family: sans-serif;
+            background-color: #7597af;
+            margin:2%;
+            color: white;
+        }
+        .mainHeader {
+            font-family: sans-serif;
+        }
+        #findCrime{
+            border: 5px solid #736759;
+            background-color: #7597af;
+            color: white;
+            height: 50px;
+            width: 150px;
+            font-family: "Arial Black";
+        }
+        #findCrime:hover {
+            border: 5px solid #6495ED;
+        }
+        #options{
+            background-color:red;
+        }
+        .outputHeader {
+            color:#e6c89d;
+            font-family:sans-serif;
+        }
+        #eachOutput {
+            border: 5px solid #3c362e;
+            padding: 10px;
+            margin: 5px;
+            width: 500px;
+        }
+        .floatRight {
+            float: right;
+            background-attachment: fixed;
+        }
+        #districtImage {
+            clear: right;
+        }
+        #linkToMap {
+            color: 	#6495ED;
+        }
+    </style>
+    </head>
+    <body>
+    <h1 class="mainHeader">Select an Option From the Dropdown Menu to Find Information About That Kind of Crime in Chicago.</h1>
+    <p></p>
+   <hr>
+   <div class="floatRight">
+   <p>Here's a map of all the Chicago Districts:</p>
+   <img src="http://home.chicagopolice.org/wp-content/uploads/2014/11/communitymap_preview.png" alt="25 Disticts of Chicago" style="width:500px;height:500px;">
+    </div>
+    <p>Crime Type: </p>
+    <select id="crimeType">
+      <option value="ARSON">ARSON</option>
+      <option value="ASSAULT">ASSAULT</option>
+      <option value="BATTERY">BATTERY</option>
+      <option value="BURGLARY">BURGLARY</option>
+      <option value="CRIMINAL DAMAGE">CRIMINAL DAMAGE</option>
+      <option value="CRIMINAL TRESPASS">CRIMINAL TRESPASS</option>
+      <option value="CRIMSEXUAL ASSAULT">CRIMINAL SEXUAL ASSAULT</option>
+      <option value="DECEPTIVE PRACTICE">DECEPTIVE PRACTICE</option>
+      <option value="OFFENSE INVOLVING CHILDREN">OFFENSE INVOLVING CHILDREN</option>
+    </select>
+    <br>
+    <br>
+    <p id="separatingText">OTHER CRIME DATA FILTERS (OPTIONAL)</p>
+    
+    <p>Location Description: </p>
+    <select id="locationDescription">
+      <option value="NONE SELECTED">NONE SELECTED</option>
+      <option value="APARTMENT">APARTMENT</option>
+      <option value="SIDEWALK">SIDEWALK</option>
+      <option value="STREET">STREET</option>
+      <option value="BARBERSHOP">BARBERSHOP</option>
+      <option value="ALLEY">ALLEY</option>
+      <option value="RESIDENCE">RESIDENCE</option>
+      <option value="GAS STATION">GAS STATION</option>
+      <option value="SMALL RETAIL STORE">SMALL RETAIL STORE</option>
+      <option value="OTHER">OTHER</option>
+    </select>
+    
+    <p>District Number: </p>
+    <select id="districtNumber">
+      <option value="NONE SELECTED">NONE SELECTED</option>
+      <option value="001">001</option>
+      <option value="002">002</option>
+      <option value="003">003</option>
+      <option value="004">004</option>
+      <option value="005">005</option>
+      <option value="006">006</option>
+      <option value="007">007</option>
+      <option value="008">008</option>
+      <option value="009">009</option>
+      <option value="010">010</option>
+      <option value="011">011</option>
+      <option value="012">012</option>
+      <option value="013">013</option>
+      <option value="014">014</option>
+      <option value="015">015</option>
+      <option value="016">016</option>
+      <option value="017">017</option>
+      <option value="018">018</option>
+      <option value="019">019</option>
+      <option value="020">020</option>
+      <option value="021">021</option>
+      <option value="022">022</option>
+      <option value="023">023</option>
+      <option value="024">024</option>
+      <option value="025">025</option>
+    </select> 
+    
+    <br>
+    <br>
+    <button id='findCrime'>Find Crime</button>
+    <p>Click the above button to return the data.</p>
+    <br>
+    <br>
+    <div id="output"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    <script>
+        $("#findCrime").click(function() {
+            $("#output").empty();
+            var baseURL = "https://data.cityofchicago.org/resource/6zsd-86xi.json";
+            var keywordCrimeType = $('#crimeType').val();
+            var filters = "?primary_type=" + keywordCrimeType;
+            var newURL = baseURL + filters;
+            
+            var keywordLocation = $("#locationDescription").val()
+            if (keywordLocation !== "NONE SELECTED") {
+                newURL = newURL + "&location_description=" + keywordLocation;
+            }
+            
+            var keywordDistrict = $("#districtNumber").val()
+            if (keywordDistrict !== "NONE SELECTED") {
+                newURL = newURL + "&district=" + keywordDistrict;
+            }
+            
+            console.log(newURL);
+            
+                $.getJSON(newURL)
+                    .done (function (data) {
+                        console.log(data);
+                        
+                        $.each(data, function(index, value){
+                            var firstAddress = value.block;
+                            var realAddress = firstAddress.slice(5);
+                            var latlong = value.latitude + "," + value.longitude;
+                            console.log(realAddress)
+                            var html= "<div id='eachOutput'>" + "<h1 class='outputHeader'>Crime: " + value.primary_type + "</h1>"
+                                      +"<p>Address: " + value.block + "</p>" 
+                                      +"<p>Type of Location: " + value.location_description + "</p>"
+                                      +"<p>Case Number: " + value.case_number + "</p>"
+                                      +"<p>Date: " + value.date + "</p>" 
+                                      +"<p>Map:" + "<br><br>" + "<a href = https://www.google.com/maps/@" + value.latitude + "," + value.longitude + "," + "14z target='_blank'" + ">" + "LINK TO MAP" + "</a>"
+                                      + "</div>";
+                            
+                            $("#output").append(html);
+                        });
+                    }); 
+                 
+        });
+        
+                    
+    </script>
+    </body>
+        </div>
+        <div id="screen2" class="screen page-content">Screen 2
+<head>
+<title>Find your car</title>
+<!-- CSS styles for standard search box -->
+<style type="text/css">
+	#tfheader{
+		background-color:#c3dfef;
+	}
+	#tfnewsearch{
+		float:right;
+		padding:20px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+</style>
+</head>
+<body>
+	<div id="tfheader">
+	<div class="tfclear"></div>
+	</div>
+	    <body>
+        <h1>Towed Vehicles</h1>
+        <input type="text" id='input' name="search" placeholder="Plate Number">
+<button id='submit'>Submit</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+	$('#submit').click(function(){
+	var baseURL = 'https://data.cityofchicago.org/resource/ygr5-vcbg.json';
+	var license = $('#input').val();
+	var filters = '?plate=' + license;
+	// full URL
+	var url = baseURL + filters;
+	console.log(url);
+	console.log(license)
+	
+	// jQuery command to retrieve json data
+	
+	$.getJSON(url)
+	.done (function (data) {
+	// TODO: add script to add data to the DOM
+	console.log(data);
+	var inspections = data
+	// loop through the records
+	if (inspections.length==0) {
+	var html = '<p>Sorry there were no results</p>'
+	$("body").append(html)
+	}
+	else {
+	$.each(data, function(index, value){
+	var html = "<div>" + "<hr>" + "<h1>License Plate #: " + value.plate + "</h1>" +
+	"<p>Color: " + value.color + "</p>" + 
+	"<p>Make: " + value.make + "</p>" +
+	"<p>State: " + value.state + "</p>" +
+	"<p>Tow Date: " +value.tow_date + "</p>" +"<p>Towed to Address: " + value.towed_to_address +"</p>" +
+	"<p>Inventory Number: " + value.inventory_number + "</p>" +"<p>Tow Facility Phone: " + value.tow_facility_phone + "</p>" +"<hr>" +"</div>"
+	"</div>";
+
+$("body").append(html);
+
+		});
+		}
+	})
+
+		})
+
+</script>
+</body>
+        </div>
+        <div id="screen3" class="screen page-content">Screen 3
+        <style>
+            h1{
+                text-align:center;
+            }
+        </style>
+        <body>
+            <h1>Chicago</h1>
+            <center>  <img src="https://s-media-cache-ak0.pinimg.com/originals/fd/5e/66/fd5e66679ef715b273528eed246512e8.jpg" style="width:400px;height:300px;border:0;"></center>
+            <center><h2>Facts</h2></center>
+            <ul>
+                <li>237 square miles of land</li>
+                <li>An estimated 2,695,598 residents</li>
+                <li>More than 7,300 restaurants</li>
+                <li>36 annual parades</li>
+                <li>26 miles of lakefront</li>
+            </ul>
+                        <center><h2>Did You Know...</h2></center>
+            <ul>
+                <li>Nearly 40 million people visit Chicago annually.</li>
+                <li>The Chicagoland area contains nearly 10 million people in three states – Illinois, Wisconsin and Indiana – and is the 22nd largest metropolitan area in the world.</li>
+                <li>Chicago’s nicknames include: The Windy City, the City of Big Shoulders, the Second City, and The City That Works.</li>
+                <li>The Lincoln Park Zoo, one of only three major free zoos in the country, is the country’s oldest public zoo with an estimated annual attendance of three million.</li>
+                <li>Chicago is home to eleven Fortune 500 companies, while the rest of the metropolitan area hosts an additional 21 Fortune 500 companies.</li>
+            </ul>
+        </body>
+        </div>
       
       </main>
     </div>
@@ -68,5 +359,16 @@
            })
         })
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    console.log("Will the service worker register?");
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+      }).catch(function(err) {
+        console.log("No it didn't. This happened: ", err)
+      });
+  }
+</script>
 </body>
 </html>
