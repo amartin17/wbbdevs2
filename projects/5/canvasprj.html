@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Simple Example</title>
+  <style>
+    canvas {
+      border: #333 10px solid;
+    }
+  </style>
+</head>
+ 
+<body>
+  <canvas id="myCanvas" width="600px" height="600px"></canvas>
+
+  <script>
+var canvas = document.querySelector("#myCanvas");
+var context = canvas.getContext("2d");
+    // draw the colored region
+    context.arc(300, 200, 93, 0, 2 * Math.PI, true);
+    context.fillStyle = "#800000";
+    context.fill();
+ 
+    // draw the stroke
+
+    context.lineWidth = 10;
+    context.strokeStyle = "black";
+    context.stroke();
+    
+context.moveTo(300, 300);
+context.lineTo(250, 300);
+context.lineTo(200, 500);
+context.lineTo(300, 300);
+context.fillStyle = "#800000";
+context.fill();
+context.closePath();
+context.moveTo(300, 300);
+context.lineTo(350, 300);
+context.lineTo(400, 500);
+context.lineTo(300, 300);
+context.fillStyle = "#800000";
+context.fill();
+context.moveTo(210, 200);
+context.lineTo(150, 200);
+context.lineTo(125, 300);
+context.moveTo(390, 200);
+context.lineTo(450, 200);
+context.lineTo(475, 300);
+context.moveTo(220, 250);
+context.lineTo(380, 250);
+context.moveTo(270, 250);
+context.lineTo(270, 290);
+context.moveTo(290, 250);
+context.lineTo(290, 290);
+context.moveTo(310, 250);
+context.lineTo(310, 290);
+context.moveTo(330, 250);
+context.lineTo(330, 290);
+    context.lineWidth = 5;
+context.moveTo(360, 140);
+context.lineTo(340, 160);
+context.lineTo(310, 130);
+context.closePath();
+context.moveTo(240, 140);
+context.lineTo(260, 160);
+context.lineTo(290, 130);
+context.closePath();
+context.moveTo(300, 210);
+context.lineTo(260, 210);
+context.lineTo(330, 210);
+context.stroke();
+
+
+  </script>
+ 
+</body>
+ 
+</html>
