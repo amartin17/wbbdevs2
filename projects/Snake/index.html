@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Snake Game </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+            $(function(){
+               var canvas= $('#myCanvas')[0];
+               var ctx = canvas.getContext('2d');
+               var width= $('#myCanvas').width();
+               var height = $('#myCanvas').height();
+               var cw=10; 
+               var d;
+               var food;
+               var score;
+               var snakeArray;
+ctx.fillStyle = "white";
+    ctx.fillRect(0,0,width,height);
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0,0,width,height);
+    ctx.fillStyle= "#045B2E";
+    ctx.fillRect(0,0,cw,cw)
+    ctx.strokeStyle = "white";
+        ctx.strokeRect(0,0,cw,cw);
+            });
+        </script>
+
+    </head>
+    <body>
+        
+<canvas id='myCanvas' width='600' height='600'>
+                   
+    
+</canvas>
+
+    </body>
+</html>
