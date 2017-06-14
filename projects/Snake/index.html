@@ -22,13 +22,67 @@ ctx.fillStyle = "white";
     ctx.strokeStyle = "white";
         ctx.strokeRect(0,0,cw,cw);
             });
+function paintCell(x,y){
+    context.fillStyle="#045B2E"
+    context.fillRect(x*cw,y*cw,cw,cw);
+    context.strokeStyle = "white";
+    context.strokeRect(x*cw,y*cw,cw,cw);
+    
+}
+function createSnake(){
+    var length = 5;
+    snakeArray+ [];
+    for(var i = length - 1; i>=; i--)
+    snakeArray.push({x: i, y: 0 })
+}
+function paint(){
+    ctx.fillStyle="white";
+    
+}
         </script>
 
     </head>
     <body>
         
 <canvas id='myCanvas' width='600' height='600'>
-                   
+                   <script>
+                               $(function(){
+               var canvas= $('#myCanvas')[0];
+               var ctx = canvas.getContext('2d');
+               var width= $('#myCanvas').width();
+               var height = $('#myCanvas').height();
+               var cw=10; 
+               var d;
+               var food;
+               var score;
+               var snakeArray;
+ctx.fillStyle = "white";
+    ctx.fillRect(0,0,width,height);
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0,0,width,height);
+    ctx.fillStyle= "#045B2E";
+    ctx.fillRect(0,0,cw,cw)
+    ctx.strokeStyle = "white";
+        ctx.strokeRect(0,0,cw,cw);
+            });
+function paintCell(x,y){
+    context.fillStyle="#045B2E"
+    context.fillRect(x*cw,y*cw,cw,cw);
+    context.strokeStyle = "white";
+    context.strokeRect(x*cw,y*cw,cw,cw);
+    
+}
+function createSnake(){
+    var length = 5;
+    snakeArray+ [];
+    for(var i = length - 1; i>=; i--)
+    snakeArray.push({x: i, y: 0 })
+}
+function paint(){
+    ctx.fillStyle="white";
+    
+}
+                   </script>
     
 </canvas>
 
